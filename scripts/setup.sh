@@ -34,6 +34,8 @@ if ! p4dctl list 2>/dev/null | grep -q "$SERVERID"; then
     # --unicode: Enable Perforce Server's unicode support.
     # --case:  Perforce Server's case sensitivity. (0=sensitive[default],1=insensitive)
     /opt/perforce/sbin/configure-helix-p4d.sh "$SERVERID" -n -p "$P4PORT" -r "$P4ROOT" -u "$P4USER" -P "$P4PASSWD" --unicode --case 1
+else
+    p4dctl start -t p4d "$SERVERID"
 fi
 
 echo "checking typemap..."
